@@ -196,6 +196,18 @@ const SeviAIHub = () => {
             </a>
           </div>
 
+          {/* SeviAI Ecosystem Signature */}
+          <div className="flex items-center justify-center gap-2 mt-8 opacity-60 hover:opacity-100 transition-opacity">
+            <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-white">
+              © 2026 Rocío Cano
+            </p>
+            <div className="w-px h-3 bg-white/20 mx-1"></div>
+            <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-white flex items-center gap-1.5">
+              SeviAI Ecosystem
+              <img src="/logo_sin_fondo.png" alt="SeviAI" className="h-3 w-auto brightness-0 invert opacity-80" />
+            </p>
+          </div>
+
         </div>
       </div>
 
