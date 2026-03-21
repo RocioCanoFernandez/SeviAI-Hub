@@ -167,8 +167,8 @@ const SeviAIHub = () => {
                 <Calendar className="w-8 h-8" />
               </div>
             </div>
-            <h3 className="text-4xl font-black text-slate-900 mb-4 group-hover:text-[#C8202F] transition-colors leading-tight">Análisis estratégico de tu empresa</h3>
-            <p className="text-slate-600 text-lg leading-relaxed font-medium opacity-80">Reserva una llamada estratégica conmigo para auditar tus procesos y encontrar oportunidades reales de ahorro con IA.</p>
+            <h3 className="text-4xl font-black text-slate-900 mb-4 group-hover:text-[#C8202F] transition-colors leading-tight">Calendario</h3>
+            <p className="text-slate-600 text-lg leading-relaxed font-medium opacity-80">Reserva una cita conmigo y vemos cómo aplicar la IA de forma útil, realista y adaptada a tu empresa.</p>
           </a>
 
           {/* SOCIALS & REVIEWS BOX */}
