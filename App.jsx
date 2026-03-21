@@ -1,8 +1,21 @@
 import React from 'react';
-import { Mail, Linkedin, Instagram, Calendar, ArrowRight, Facebook, Star, ExternalLink, GraduationCap, Bot, MessageSquare } from 'lucide-react';
+import { Mail, Linkedin, Instagram, Calendar, ArrowRight, Facebook, Star, ExternalLink, GraduationCap, Bot, MessageSquare, MessageCircle, Download } from 'lucide-react';
 
 const SeviAIHub = () => {
   // ELIMINADO: El Chatbot ahora se carga desde index.html para evitar errores de React.
+
+  const handleSaveContact = () => {
+    const vcard = `BEGIN:VCARD\r\nVERSION:3.0\r\nFN:Rocío Cano\r\nORG:SeviAI\r\nTITLE:IA práctica para hacer crecer tu empresa\r\nEMAIL:rocio@seviai.es\r\nURL:https://hub.seviai.es/\r\nEND:VCARD`;
+    const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'Rocio_Cano.vcf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
 
   return (
     <div className="min-h-screen bg-white text-slate-800 font-sans flex flex-col lg:flex-row selection:bg-red-600 selection:text-white relative">
@@ -103,6 +116,20 @@ const SeviAIHub = () => {
             </div>
             <ArrowRight className="w-5 h-5 text-slate-300 group-hover:text-red-400 transform group-hover:translate-x-1 transition-all" />
           </a>
+
+          <a href="https://wa.me/message/HUZQ5TAK3ROOE1" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-4 bg-slate-50 hover:bg-white border border-slate-200 rounded-3xl transition-all shadow-sm">
+            <div className="flex items-center gap-4">
+              <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-slate-400 group-hover:text-green-600 transition-colors border border-slate-100 font-bold">
+                <MessageCircle className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="block font-black text-slate-900">WhatsApp</span>
+                <span className="text-[10px] text-slate-400 font-bold">Hablemos por chat</span>
+              </div>
+            </div>
+            <ArrowRight className="w-5 h-5 text-slate-300 group-hover:text-green-400 transform group-hover:translate-x-1 transition-all" />
+          </a>
+
         </div>
 
         {/* Isotipo Mark Background */}
@@ -171,6 +198,16 @@ const SeviAIHub = () => {
 
         </div>
       </div>
+
+      {/* Floating Save Contact Button */}
+      <button
+        onClick={handleSaveContact}
+        className="fixed top-6 right-6 w-14 h-14 bg-white/90 backdrop-blur-md text-slate-700 rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl hover:scale-110 transition-all duration-300 z-50 group border border-white/50 cursor-pointer"
+        title="Descargar Contacto"
+        aria-label="Descargar Contacto"
+      >
+        <Download className="w-6 h-6 group-hover:text-[#C8202F] transition-colors drop-shadow-sm" />
+      </button>
 
     </div>
   );
