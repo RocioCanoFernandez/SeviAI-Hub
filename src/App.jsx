@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Linkedin, Instagram, Calendar, ArrowRight, Facebook, Star, ExternalLink, GraduationCap, Bot, MessageSquare, MessageCircle, Download } from 'lucide-react';
+import { Mail, Linkedin, Instagram, Calendar, ArrowRight, Facebook, Star, ExternalLink, GraduationCap, Bot, MessageSquare, MessageCircle, Download, Rocket } from 'lucide-react';
 
 const SeviAIHub = () => {
   // ELIMINADO: El Chatbot ahora se carga desde index.html para evitar errores de React.
@@ -64,6 +64,21 @@ const SeviAIHub = () => {
 
         {/* Buttons List */}
         <div className="flex flex-col gap-3 relative z-10 w-full max-w-md uppercase tracking-wider">
+
+          {/* CTA Principal - Servicio de Hub */}
+          <a href="https://tu-hub-facil.lovable.app" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-5 bg-slate-900 hover:bg-slate-800 rounded-3xl transition-all shadow-xl shadow-slate-200 border-b-4 border-slate-700 active:translate-y-1 mb-1">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white border border-white/10 relative overflow-hidden">
+                <Rocket className="w-7 h-7 relative z-10 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#C8202F]/60 to-transparent"></div>
+              </div>
+              <div>
+                <span className="block font-black text-white text-lg">¿Quieres tu Hub?</span>
+                <span className="text-[10px] text-slate-300 font-bold opacity-90">Te creamos tu propio ecosistema</span>
+              </div>
+            </div>
+            <ArrowRight className="w-6 h-6 text-white/50 group-hover:text-white transform group-hover:translate-x-1 transition-all" />
+          </a>
 
           <a href="https://www.seviai.es/formacion-ia/" className="group flex items-center justify-between p-5 bg-[#C8202F] hover:bg-[#A51A27] rounded-3xl transition-all shadow-xl shadow-red-100 border-b-4 border-red-900/20 active:translate-y-1">
             <div className="flex items-center gap-4">
