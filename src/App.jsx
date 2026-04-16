@@ -66,44 +66,56 @@ const SeviAIHub = () => {
         <div className="flex flex-col gap-3 relative z-10 w-full max-w-md uppercase tracking-wider">
 
           {/* CTA Principal - Servicio de Hub */}
-          <a href="https://tu-hub-facil.lovable.app" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-5 bg-slate-900 hover:bg-slate-800 rounded-3xl transition-all shadow-xl shadow-slate-200 border-b-4 border-slate-700 active:translate-y-1 mb-1">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white border border-white/10 relative overflow-hidden">
-                <Rocket className="w-7 h-7 relative z-10 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#C8202F]/60 to-transparent"></div>
+          <a href="https://tu-hub-facil.lovable.app" target="_blank" rel="noopener noreferrer" className="group flex flex-col p-5 sm:p-6 bg-slate-900 hover:bg-slate-800 rounded-3xl transition-all shadow-xl shadow-slate-200 border-b-4 border-slate-700 active:translate-y-1 mb-2">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white border border-white/10 relative overflow-hidden flex-shrink-0">
+                  <Rocket className="w-7 h-7 relative z-10 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#C8202F]/60 to-transparent"></div>
+                </div>
+                <div>
+                  <span className="block font-black text-white text-lg">¿Quieres tu Hub?</span>
+                </div>
               </div>
-              <div>
-                <span className="block font-black text-white text-lg">¿Quieres tu Hub?</span>
-                <span className="text-[10px] text-slate-300 font-bold opacity-90">Te creamos tu propio ecosistema</span>
-              </div>
+              <ArrowRight className="w-6 h-6 text-white/50 group-hover:text-white transform group-hover:translate-x-1 transition-all flex-shrink-0" />
             </div>
-            <ArrowRight className="w-6 h-6 text-white/50 group-hover:text-white transform group-hover:translate-x-1 transition-all" />
+            <p className="text-xs sm:text-sm text-slate-300 font-medium leading-relaxed opacity-90 mt-3 sm:ml-16">
+              Creamos hubs digitales para centralizar enlaces, contacto y recursos de tu negocio, además de automatizaciones personalizadas para empresas.
+            </p>
           </a>
 
-          <a href="https://www.seviai.es/formacion-ia/" className="group flex items-center justify-between p-5 bg-[#C8202F] hover:bg-[#A51A27] rounded-3xl transition-all shadow-xl shadow-red-100 border-b-4 border-red-900/20 active:translate-y-1">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white border border-white/10">
-                <Bot className="w-7 h-7" />
+          <a href="https://www.seviai.es/formacion-ia/" className="group flex flex-col p-5 sm:p-6 bg-[#C8202F] hover:bg-[#A51A27] rounded-3xl transition-all shadow-xl shadow-red-100 border-b-4 border-red-900/20 active:translate-y-1">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white border border-white/10 flex-shrink-0">
+                  <Bot className="w-7 h-7" />
+                </div>
+                <div>
+                  <span className="block font-black text-white text-lg">Formación para empresas</span>
+                </div>
               </div>
-              <div>
-                <span className="block font-black text-white text-lg">Formación para empresas</span>
-                <span className="text-[10px] text-red-50 font-bold opacity-80">Capacitación B2B Premium</span>
-              </div>
+              <ArrowRight className="w-6 h-6 text-white/50 group-hover:text-white transform group-hover:translate-x-1 transition-all flex-shrink-0" />
             </div>
-            <ArrowRight className="w-6 h-6 text-white/50 group-hover:text-white transform group-hover:translate-x-1 transition-all" />
+            <p className="text-xs sm:text-sm text-red-50 font-medium leading-relaxed opacity-90 mt-3 sm:ml-16">
+              Formación práctica en IA adaptada a cada empresa, en sus instalaciones o en formato online, según sus procesos y objetivos.
+            </p>
           </a>
 
-          <a href="https://ia-py-mi-booster.lovable.app/" className="group flex items-center justify-between p-5 bg-[#C8202F] hover:bg-[#A51A27] rounded-3xl transition-all shadow-xl shadow-red-100 border-b-4 border-red-900/20 active:translate-y-1">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white border border-white/10">
-                <GraduationCap className="w-7 h-7" />
+          <a href="https://ia-py-mi-booster.lovable.app/" className="group flex flex-col p-5 sm:p-6 bg-[#C8202F] hover:bg-[#A51A27] rounded-3xl transition-all shadow-xl shadow-red-100 border-b-4 border-red-900/20 active:translate-y-1">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white border border-white/10 flex-shrink-0">
+                  <GraduationCap className="w-7 h-7" />
+                </div>
+                <div>
+                  <span className="block font-black text-white text-lg">Curso IA para pymes</span>
+                </div>
               </div>
-              <div>
-                <span className="block font-black text-white text-lg">Curso IA para PYMEs</span>
-                <span className="text-[10px] text-red-50 font-bold opacity-80">Autónomos y Emprendedores</span>
-              </div>
+              <ArrowRight className="w-6 h-6 text-white/50 group-hover:text-white transform group-hover:translate-x-1 transition-all flex-shrink-0" />
             </div>
-            <ArrowRight className="w-6 h-6 text-white/50 group-hover:text-white transform group-hover:translate-x-1 transition-all" />
+            <p className="text-xs sm:text-sm text-red-50 font-medium leading-relaxed opacity-90 mt-3 sm:ml-16">
+              Curso presencial abierto a empresarios, emprendedoras y profesionales que quieren aplicar la IA de forma útil en su negocio. Suele haber una edición al mes, aunque no siempre se celebra todos los meses, así que es importante consultar las próximas fechas disponibles.
+            </p>
           </a>
 
           <a href="https://seviai.es" className="group flex items-center justify-between p-4 bg-slate-50 hover:bg-white border border-slate-200 rounded-3xl transition-all shadow-sm">
