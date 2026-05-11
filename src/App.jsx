@@ -5,7 +5,7 @@ const SeviAIHub = () => {
   // ELIMINADO: El Chatbot ahora se carga desde index.html para evitar errores de React.
 
   const handleSaveContact = () => {
-    const vcard = `BEGIN:VCARD\r\nVERSION:3.0\r\nFN:Rocío Cano\r\nORG:SeviAI\r\nTITLE:IA práctica para hacer crecer tu empresa\r\nEMAIL:rocio@seviai.es\r\nURL:https://hub.seviai.es/\r\nEND:VCARD`;
+    const vcard = `BEGIN:VCARD\r\nVERSION:3.0\r\nN:Cano;Rocío;;;\r\nFN:Rocío Cano\r\nORG:SeviAI\r\nTITLE:IA práctica para hacer crecer tu empresa\r\nTEL;TYPE=WORK,VOICE:+34640316034\r\nEMAIL:rocio@seviai.es\r\nURL:https://hub.seviai.es/\r\nEND:VCARD`;
     const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
