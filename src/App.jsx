@@ -26,17 +26,42 @@ const AccordionItem = ({ title, icon: Icon, children, isOpen, onClick }) => (
 const SeviAIHub = () => {
   const [openAccordion, setOpenAccordion] = useState('estrella'); // 'estrella' opens by default
 
-  const handleSaveContact = () => {
-    const vcard = `BEGIN:VCARD\r\nVERSION:3.0\r\nN:Cano;Rocío;;;\r\nFN:Rocío Cano\r\nORG:SeviAI\r\nTITLE:Consultora Estratégica en IA para PYMES\r\nTEL;TYPE=WORK,VOICE:+34640316034\r\nEMAIL:rocio@seviai.es\r\nURL:https://hub.seviai.es/\r\nEND:VCARD`;
-    const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'Rocio_Cano.vcf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+  const handleSaveContact = async () => {
+    try {
+      const response = await fetch('/rocio-headshot.JPG');
+      const blobImage = await response.blob();
+      const reader = new FileReader();
+      
+      reader.onloadend = () => {
+        const base64data = reader.result.split(',')[1];
+        const vcard = `BEGIN:VCARD\r\nVERSION:3.0\r\nN;CHARSET=UTF-8:Cano;Rocío;;;\r\nFN;CHARSET=UTF-8:Rocío Cano\r\nORG;CHARSET=UTF-8:SeviAI\r\nTITLE;CHARSET=UTF-8:Consultora Estratégica en IA para PYMES\r\nTEL;TYPE=WORK,VOICE:+34640316034\r\nEMAIL:rocio@seviai.es\r\nURL:https://hub.seviai.es/\r\nPHOTO;ENCODING=b;TYPE=JPEG:${base64data}\r\nEND:VCARD`;
+        
+        // Agregar BOM UTF-8 (\ufeff) para que Windows lo reconozca perfectamente
+        const blob = new Blob(['\ufeff' + vcard], { type: 'text/vcard;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'Rocio_Cano.vcf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      };
+      reader.readAsDataURL(blobImage);
+    } catch (error) {
+      console.error("Error al generar vCard con foto", error);
+      // Fallback sin foto
+      const vcard = `BEGIN:VCARD\r\nVERSION:3.0\r\nN;CHARSET=UTF-8:Cano;Rocío;;;\r\nFN;CHARSET=UTF-8:Rocío Cano\r\nORG;CHARSET=UTF-8:SeviAI\r\nTITLE;CHARSET=UTF-8:Consultora Estratégica en IA para PYMES\r\nTEL;TYPE=WORK,VOICE:+34640316034\r\nEMAIL:rocio@seviai.es\r\nURL:https://hub.seviai.es/\r\nEND:VCARD`;
+      const blob = new Blob(['\ufeff' + vcard], { type: 'text/vcard;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'Rocio_Cano.vcf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }
   };
 
   const toggleAccordion = (id) => {
@@ -99,7 +124,7 @@ const SeviAIHub = () => {
             <img
               src="/SeviAI-asesoría y formación_horizontal_sin_fondo.png"
               alt="SeviAI Logo"
-              className="h-12 w-auto object-contain brightness-0 invert opacity-90 mb-4"
+              className="h-16 sm:h-20 w-auto object-contain brightness-0 invert opacity-100 mb-5"
             />
             
             <h1 className="text-2xl sm:text-3xl font-black text-white mb-2 leading-tight">
