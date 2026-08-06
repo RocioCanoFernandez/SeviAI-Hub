@@ -1,11 +1,33 @@
-import React from 'react';
-import { Mail, Linkedin, Instagram, Calendar, ArrowRight, Facebook, Star, ExternalLink, GraduationCap, Bot, MessageSquare, MessageCircle, Download, Rocket } from 'lucide-react';
+import React, { useState } from 'react';
+import { Mail, Linkedin, Instagram, Calendar, ArrowRight, Facebook, Star, MessageCircle, Download, ChevronDown, CheckCircle, Briefcase, Zap, Rocket, GraduationCap, BarChart } from 'lucide-react';
+
+const AccordionItem = ({ title, icon: Icon, children, isOpen, onClick }) => (
+  <div className={`border rounded-[20px] backdrop-blur-md overflow-hidden transition-all duration-300 mb-4 shadow-lg ${isOpen ? 'border-red-500/50 bg-slate-900/60' : 'border-white/10 bg-slate-800/40 hover:bg-slate-800/60'}`}>
+    <button 
+      onClick={onClick}
+      className="w-full flex items-center justify-between p-5 text-left text-white transition-colors group"
+    >
+      <div className="flex items-center gap-4">
+        <div className={`w-12 h-12 rounded-xl flex items-center justify-center border transition-colors ${isOpen ? 'bg-red-600/30 text-red-400 border-red-500/50' : 'bg-white/5 text-slate-300 border-white/10 group-hover:bg-white/10'}`}>
+          <Icon className="w-6 h-6" />
+        </div>
+        <span className="font-bold text-lg">{title}</span>
+      </div>
+      <ChevronDown className={`w-5 h-5 text-slate-400 transition-transform duration-300 ${isOpen ? 'rotate-180 text-white' : ''}`} />
+    </button>
+    <div className={`transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[1000px] opacity-100 p-5 pt-0' : 'max-h-0 opacity-0 px-5 pt-0'} overflow-hidden`}>
+      <div className="text-slate-300 pt-4 border-t border-white/10">
+        {children}
+      </div>
+    </div>
+  </div>
+);
 
 const SeviAIHub = () => {
-  // ELIMINADO: El Chatbot ahora se carga desde index.html para evitar errores de React.
+  const [openAccordion, setOpenAccordion] = useState('estrella'); // 'estrella' opens by default
 
   const handleSaveContact = () => {
-    const vcard = `BEGIN:VCARD\r\nVERSION:3.0\r\nN:Cano;Rocío;;;\r\nFN:Rocío Cano\r\nORG:SeviAI\r\nTITLE:IA práctica para hacer crecer tu empresa\r\nTEL;TYPE=WORK,VOICE:+34640316034\r\nEMAIL:rocio@seviai.es\r\nURL:https://hub.seviai.es/\r\nEND:VCARD`;
+    const vcard = `BEGIN:VCARD\r\nVERSION:3.0\r\nN:Cano;Rocío;;;\r\nFN:Rocío Cano\r\nORG:SeviAI\r\nTITLE:Consultora Estratégica en IA para PYMES\r\nTEL;TYPE=WORK,VOICE:+34640316034\r\nEMAIL:rocio@seviai.es\r\nURL:https://hub.seviai.es/\r\nEND:VCARD`;
     const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
@@ -17,235 +39,251 @@ const SeviAIHub = () => {
     URL.revokeObjectURL(url);
   };
 
+  const toggleAccordion = (id) => {
+    setOpenAccordion(openAccordion === id ? null : id);
+  };
+
   return (
-    <div className="min-h-screen bg-white text-slate-800 font-sans flex flex-col lg:flex-row selection:bg-red-600 selection:text-white relative">
+    <div className="min-h-screen font-sans selection:bg-red-600 selection:text-white relative bg-slate-800">
+      {/* BACKGROUND IMAGE OVERLAY */}
+      <div
+        className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url('/loop-copia.jpg')",
+        }}
+      >
+        {/* Glass gradient overlay to make text readable (lightened from black to slate) */}
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-800/60 to-slate-900/90 backdrop-blur-[2px]"></div>
+      </div>
 
-      {/* LEFT SIDE: Content & Hero */}
-      <div className="w-full lg:w-1/2 p-8 md:p-12 lg:p-20 flex flex-col justify-center min-h-screen relative overflow-hidden">
-
-        {/* Brand Tag */}
-        <div className="inline-flex items-center px-4 py-2 rounded-full bg-red-50 text-red-600 text-[10px] font-black mb-8 w-fit border border-red-100 shadow-sm relative z-10 uppercase tracking-[0.15em]">
-          <span className="w-2 h-2 rounded-full bg-red-600 mr-2 animate-pulse"></span>
-          Inteligencia artificial con rostro humano
+      {/* MAIN CONTAINER (Single Column) */}
+      <div className="relative z-10 w-full max-w-2xl mx-auto px-4 py-12 md:py-16 flex flex-col items-center">
+        
+        {/* BRAND TAG */}
+        <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-red-950/50 text-red-300 text-[10px] font-black mb-8 border border-red-900/50 shadow-sm uppercase tracking-[0.15em] backdrop-blur-sm">
+          <span className="w-2 h-2 rounded-full bg-red-500 mr-2 animate-pulse"></span>
+          Consultoría Estratégica B2B
         </div>
 
-        {/* Logo & Profile Section */}
-        <div className="flex items-center gap-8 mb-10 lg:mb-14 relative z-10">
-          <img
-            src="/SeviAI-asesoría y formación_horizontal_sin_fondo.png"
-            alt="SeviAI"
-            className="h-20 sm:h-24 w-auto object-contain"
-          />
-          <div className="h-20 w-px bg-slate-200 self-center hidden sm:block"></div>
-          <div className="relative">
-            <div className="w-28 h-28 rounded-full border-4 border-red-50 overflow-hidden shadow-2xl bg-slate-50">
+        {/* HERO SECTION */}
+        <div className="w-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-[35px] overflow-hidden mb-10 shadow-2xl relative">
+          {/* Panoramic Photo */}
+          <div className="w-full h-64 sm:h-72 bg-slate-800 relative overflow-hidden">
+            <img 
+              src="/hero.jpg" 
+              alt="Rocío Cano Ponencia" 
+              className="w-full h-full object-cover object-top"
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.parentElement.classList.add('bg-gradient-to-tr', 'from-red-900', 'to-slate-800');
+              }}
+            />
+            {/* Gradient to blend image with content */}
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
+          </div>
+
+          {/* Profile & Logo */}
+          <div className="px-6 pb-8 pt-0 relative -mt-16 flex flex-col items-center text-center">
+            <div className="w-32 h-32 rounded-full border-4 border-slate-800 overflow-hidden shadow-2xl bg-slate-50 mb-4 z-10 relative">
               <img
                 src="/rocio-headshot.JPG"
-                alt="Rocío"
+                alt="Rocío Cano"
                 className="w-full h-full object-cover"
                 onError={(e) => {
                   e.target.src = "https://ui-avatars.com/api/?name=Roc%C3%ADo&background=C8202F&color=fff";
                 }}
               />
+              {/* Removed the green dot per user request */}
             </div>
-            <div className="absolute bottom-2 right-2 w-6 h-6 bg-green-500 border-4 border-white rounded-full shadow-md"></div>
+            
+            <img
+              src="/SeviAI-asesoría y formación_horizontal_sin_fondo.png"
+              alt="SeviAI Logo"
+              className="h-12 w-auto object-contain brightness-0 invert opacity-90 mb-4"
+            />
+            
+            <h1 className="text-2xl sm:text-3xl font-black text-white mb-2 leading-tight">
+              La IA no va de acumular herramientas.
+            </h1>
+            <p className="text-red-200 font-medium text-sm sm:text-base max-w-md mx-auto">
+              Va de ordenar tecnología, personas y decisiones.
+            </p>
           </div>
         </div>
 
-        {/* Main Headline */}
-        <h1 className="text-4xl lg:text-6xl font-black tracking-tight text-slate-900 mb-6 leading-[1.05] relative z-10">
-          IA práctica para hacer crecer tu empresa
-        </h1>
+        {/* CALENDAR - PRIMARY ACTION */}
+        <a href="https://cal.com/rocio-cano-seviai" className="w-full block bg-white rounded-[30px] p-6 shadow-2xl hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(200,32,47,0.5)] transition-all duration-500 group border-b-4 border-red-600 relative overflow-hidden mb-8">
+          <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity transform group-hover:scale-110 duration-500">
+            <Calendar className="w-32 h-32 text-red-900" />
+          </div>
+          <div className="flex items-center gap-5 relative">
+            <div className="bg-red-50 text-[#C8202F] p-4 rounded-[20px] group-hover:rotate-12 transition-transform shadow-sm">
+              <Calendar className="w-8 h-8" />
+            </div>
+            <div>
+              <h3 className="text-2xl font-black text-slate-900 group-hover:text-[#C8202F] transition-colors leading-tight mb-1">Agenda tu llamada</h3>
+              <p className="text-slate-500 text-sm font-medium">Reunión estratégica gratuita de 30 min.</p>
+            </div>
+          </div>
+        </a>
 
-        {/* Subtitle */}
-        <p className="text-lg text-slate-600 mb-10 max-w-lg leading-relaxed relative z-10">
-          Servicios, formación y recursos para aplicar inteligencia artificial de forma clara y útil en tu negocio.
-        </p>
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent my-6"></div>
 
-        {/* Buttons List */}
-        <div className="flex flex-col gap-3 relative z-10 w-full max-w-md uppercase tracking-wider">
+        {/* SERVICES ACCORDIONS */}
+        <div className="w-full flex flex-col mb-8">
+          <h2 className="text-white font-black text-xl mb-6 text-center uppercase tracking-widest text-[11px] opacity-80 drop-shadow-md">
+            Nuestros Servicios
+          </h2>
 
-          {/* CTA Principal - Servicio de Hub */}
-          <a href="https://tu-hub-facil.lovable.app" target="_blank" rel="noopener noreferrer" className="group flex flex-col p-5 sm:p-6 bg-slate-900 hover:bg-slate-800 rounded-3xl transition-all shadow-xl shadow-slate-200 border-b-4 border-slate-700 active:translate-y-1 mb-2">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white border border-white/10 relative overflow-hidden flex-shrink-0">
-                  <Rocket className="w-7 h-7 relative z-10 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-[#C8202F]/60 to-transparent"></div>
-                </div>
+          <AccordionItem 
+            title="El Programa Estrella" 
+            icon={Star} 
+            isOpen={openAccordion === 'estrella'}
+            onClick={() => toggleAccordion('estrella')}
+          >
+            <div className="flex flex-col gap-4">
+              <p className="text-sm leading-relaxed">
+                <strong className="text-white">Método SeviAI 360º:</strong> Nuestra solución integral como directores de orquesta de la IA en tu empresa. Incluye auditoría profunda, formación de equipos, implementación técnica y blindaje legal/seguridad.
+              </p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
+                <a href="https://formaciones.seviai.es" className="flex items-center justify-center gap-2 bg-[#C8202F] hover:bg-[#A51A27] text-white p-3 rounded-xl font-bold text-sm transition-colors shadow-lg">
+                  <BarChart className="w-4 h-4" />
+                  Solicitar Diagnóstico
+                </a>
+                <a href="https://www.seviai.es/metodo-seviai-360/" className="flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 p-3 rounded-xl font-bold text-sm transition-colors">
+                  <Briefcase className="w-4 h-4" />
+                  Ver Método Completo
+                </a>
+              </div>
+            </div>
+          </AccordionItem>
+
+          <AccordionItem 
+            title="Soluciones 'Llave en Mano'" 
+            icon={Zap} 
+            isOpen={openAccordion === 'llave'}
+            onClick={() => toggleAccordion('llave')}
+          >
+            <div className="flex flex-col gap-4">
+              <p className="text-sm leading-relaxed mb-2 text-slate-300">
+                Productos empaquetados y listos para funcionar con impacto y beneficio inmediato en tu facturación o gestión:
+              </p>
+              
+              <a href="#" className="block bg-white/5 hover:bg-white/10 transition-colors rounded-xl p-4 border border-white/5">
+                <h4 className="text-white font-bold mb-1 flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-400"/> Sistema de Reservas</h4>
+                <p className="text-xs text-slate-400">Asistente IA para alojamientos turísticos que gestiona clientes 24/7.</p>
+              </a>
+
+              <a href="https://tu-hub-facil.lovable.app" className="block bg-white/5 hover:bg-white/10 transition-colors rounded-xl p-4 border border-white/5">
+                <h4 className="text-white font-bold mb-1 flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-400"/> Automatización de Facturas</h4>
+                <p className="text-xs text-slate-400">La IA extrae y clasifica tus facturas olvidándote del papeleo.</p>
+              </a>
+
+              <a href="https://tu-hub-facil.lovable.app" className="block bg-white/5 hover:bg-white/10 transition-colors rounded-xl p-4 border border-white/5">
+                <h4 className="text-white font-bold mb-1 flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-400"/> Tu Hub Corporativo (NFC)</h4>
+                <p className="text-xs text-slate-400">Tu ecosistema digital para compartir tu contacto con solo acercar el móvil.</p>
+              </a>
+            </div>
+          </AccordionItem>
+
+          <AccordionItem 
+            title="Servicios 'A la Carta'" 
+            icon={Rocket} 
+            isOpen={openAccordion === 'carta'}
+            onClick={() => toggleAccordion('carta')}
+          >
+            <div className="flex flex-col gap-4">
+              <p className="text-sm leading-relaxed mb-2 text-slate-300">
+                Para negocios que buscan una solución concreta o puntual para resolver cuellos de botella específicos:
+              </p>
+              
+              <a href="https://cal.com/rocio-cano-seviai/60min" className="group flex items-center justify-between bg-white/5 hover:bg-white/10 rounded-xl p-4 border border-white/5 transition-colors">
                 <div>
-                  <span className="block font-black text-white text-lg">¿Quieres tu Hub?</span>
+                  <h4 className="text-white font-bold text-sm mb-1">Consultoría Estratégica</h4>
+                  <p className="text-xs text-slate-400">Sesiones 1 a 1 por horas.</p>
                 </div>
-              </div>
-              <ArrowRight className="w-6 h-6 text-white/50 group-hover:text-white transform group-hover:translate-x-1 transition-all flex-shrink-0" />
-            </div>
-            <p className="text-xs sm:text-sm text-slate-300 font-medium leading-relaxed opacity-90 mt-3 sm:ml-16">
-              Creamos hubs digitales para centralizar enlaces, contacto y recursos de tu negocio, además de automatizaciones personalizadas para empresas.
-            </p>
-          </a>
+                <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-red-400 transition-colors" />
+              </a>
 
-          <a href="https://www.seviai.es/formacion-ia/" className="group flex flex-col p-5 sm:p-6 bg-[#C8202F] hover:bg-[#A51A27] rounded-3xl transition-all shadow-xl shadow-red-100 border-b-4 border-red-900/20 active:translate-y-1">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white border border-white/10 flex-shrink-0">
-                  <Bot className="w-7 h-7" />
-                </div>
+              <a href="https://www.seviai.es/formacion-ia/" className="group flex items-center justify-between bg-white/5 hover:bg-white/10 rounded-xl p-4 border border-white/5 transition-colors">
                 <div>
-                  <span className="block font-black text-white text-lg">Formación para empresas</span>
+                  <h4 className="text-white font-bold text-sm mb-1">Formación In-Company</h4>
+                  <p className="text-xs text-slate-400">Cursos cerrados y bonificables.</p>
                 </div>
-              </div>
-              <ArrowRight className="w-6 h-6 text-white/50 group-hover:text-white transform group-hover:translate-x-1 transition-all flex-shrink-0" />
-            </div>
-            <p className="text-xs sm:text-sm text-red-50 font-medium leading-relaxed opacity-90 mt-3 sm:ml-16">
-              Formación práctica en IA adaptada a cada empresa, en sus instalaciones o en formato online, según sus procesos y objetivos.
-            </p>
-          </a>
+                <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-red-400 transition-colors" />
+              </a>
 
-          <a href="https://ia-py-mi-booster.lovable.app/" className="group flex flex-col p-5 sm:p-6 bg-[#C8202F] hover:bg-[#A51A27] rounded-3xl transition-all shadow-xl shadow-red-100 border-b-4 border-red-900/20 active:translate-y-1">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white border border-white/10 flex-shrink-0">
-                  <GraduationCap className="w-7 h-7" />
-                </div>
+              <a href="https://www.seviai.es/servicios/" className="group flex items-center justify-between bg-white/5 hover:bg-white/10 rounded-xl p-4 border border-white/5 transition-colors">
                 <div>
-                  <span className="block font-black text-white text-lg">Curso IA para pymes</span>
+                  <h4 className="text-white font-bold text-sm mb-1">Desarrollo a Medida</h4>
+                  <p className="text-xs text-slate-400">Soluciones entrenadas con tus datos.</p>
                 </div>
-              </div>
-              <ArrowRight className="w-6 h-6 text-white/50 group-hover:text-white transform group-hover:translate-x-1 transition-all flex-shrink-0" />
+                <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-red-400 transition-colors" />
+              </a>
             </div>
-            <p className="text-xs sm:text-sm text-red-50 font-medium leading-relaxed opacity-90 mt-3 sm:ml-16">
-              Curso presencial abierto a empresarios, emprendedoras y profesionales que quieren aplicar la IA de forma útil en su negocio. Suele haber una edición al mes, aunque no siempre se celebra todos los meses, así que es importante consultar las próximas fechas disponibles.
-            </p>
-          </a>
-
-          <a href="https://seviai.es" className="group flex items-center justify-between p-4 bg-slate-50 hover:bg-white border border-slate-200 rounded-3xl transition-all shadow-sm">
-            <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-slate-400 group-hover:text-red-600 transition-colors border border-slate-100 font-bold">
-                <ExternalLink className="w-5 h-5" />
-              </div>
-              <div>
-                <span className="block font-black text-slate-900">Web SeviAI</span>
-                <span className="text-[10px] text-slate-500 font-bold">Servicios y Marca</span>
-              </div>
-            </div>
-            <ArrowRight className="w-5 h-5 text-slate-300 group-hover:text-red-400 transform group-hover:translate-x-1 transition-all" />
-          </a>
-
-          <a href="mailto:rocio@seviai.es" className="group flex items-center justify-between p-4 bg-slate-50 hover:bg-white border border-slate-200 rounded-3xl transition-all shadow-sm">
-            <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-slate-400 group-hover:text-red-600 transition-colors border border-slate-100 font-bold">
-                <Mail className="w-5 h-5" />
-              </div>
-              <div>
-                <span className="block font-black text-slate-900">Contacto Directo</span>
-                <span className="text-[10px] text-slate-400 font-bold">rocio@seviai.es</span>
-              </div>
-            </div>
-            <ArrowRight className="w-5 h-5 text-slate-300 group-hover:text-red-400 transform group-hover:translate-x-1 transition-all" />
-          </a>
-
-          <a href="https://wa.me/message/HUZQ5TAK3ROOE1" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-4 bg-slate-50 hover:bg-white border border-slate-200 rounded-3xl transition-all shadow-sm">
-            <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-slate-400 group-hover:text-green-600 transition-colors border border-slate-100 font-bold">
-                <MessageCircle className="w-5 h-5" />
-              </div>
-              <div>
-                <span className="block font-black text-slate-900">WhatsApp</span>
-                <span className="text-[10px] text-slate-400 font-bold">Hablemos por chat</span>
-              </div>
-            </div>
-            <ArrowRight className="w-5 h-5 text-slate-300 group-hover:text-green-400 transform group-hover:translate-x-1 transition-all" />
-          </a>
+          </AccordionItem>
 
         </div>
 
-        {/* Isotipo Mark Background */}
-        <div className="absolute bottom-[-10%] left-[-5%] opacity-[0.03] pointer-events-none z-0">
-          <img
-            src="/logo_sin_fondo.png"
-            alt=""
-            className="w-[500px] h-[500px] object-contain grayscale"
-          />
-        </div>
-      </div>
+        {/* CONTACT & SOCIALS */}
+        <div className="w-full bg-slate-800/50 backdrop-blur-xl border border-white/10 rounded-[35px] p-8 mt-4 flex flex-col gap-8 shadow-2xl">
+          <div className="text-center flex flex-col gap-2">
+            <span className="text-red-300 font-black text-[10px] uppercase tracking-[0.35em] block">CONOCIMIENTO & CONTACTO</span>
+            <p className="text-white text-sm font-medium opacity-80">Sígueme y contáctame para aplicar IA a tu negocio.</p>
+          </div>
 
-      {/* RIGHT SIDE: Action Section & Conversion */}
-      <div className="w-full lg:w-1/2 p-6 sm:p-10 md:p-16 lg:p-20 flex flex-col justify-center relative bg-[#C8202F] min-h-screen">
-
-        {/* BACKGROUND IMAGE CON MEJOR VISIBILIDAD */}
-        <div
-          className="absolute inset-[0] z-0 bg-cover bg-center"
-          style={{
-            backgroundImage: "linear-gradient(to bottom right, rgba(200, 32, 47, 0.45), rgba(139, 22, 33, 0.65)), url('/loop-copia.jpg')",
-            backgroundBlendMode: 'normal'
-          }}
-        ></div>
-
-        <div className="relative z-10 flex flex-col gap-6 max-w-xl mx-auto w-full">
-
-          {/* MAIN CTA: Agenda */}
-          <a href="https://cal.com/rocio-cano-seviai" className="block bg-white rounded-[45px] p-10 shadow-2xl hover:-translate-y-2 transition-all duration-500 group border-b-8 border-red-50 relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity transform group-hover:scale-110 duration-500">
-              <Calendar className="w-40 h-40 text-red-900" />
-            </div>
-            <div className="flex justify-between items-start mb-8 relative">
-              <div className="px-5 py-2 rounded-full bg-red-600 text-white text-[10px] font-black uppercase tracking-[0.2em]">RESERVAR CITA</div>
-              <div className="bg-red-50 text-[#C8202F] p-4 rounded-[20px] group-hover:rotate-12 transition-transform shadow-md">
-                <Calendar className="w-8 h-8" />
-              </div>
-            </div>
-            <h3 className="text-4xl font-black text-slate-900 mb-4 group-hover:text-[#C8202F] transition-colors leading-tight">Calendario</h3>
-            <p className="text-slate-600 text-lg leading-relaxed font-medium opacity-80">Reserva una cita conmigo y vemos cómo aplicar la IA de forma útil, realista y adaptada a tu empresa.</p>
-          </a>
-
-          {/* SOCIALS & REVIEWS BOX */}
-          <div className="bg-black/15 backdrop-blur-xl border border-white/10 rounded-[45px] p-8 md:p-10 flex flex-col gap-8">
-            <div className="text-center md:text-left flex flex-col gap-2">
-              <span className="text-red-200 font-black text-[10px] uppercase tracking-[0.35em] block">CONOCIMIENTO & REDES</span>
-              <p className="text-white text-base font-medium opacity-90">Sígueme para aprender sobre IA aplicada a negocios reales.</p>
-            </div>
-
-            <div className="grid grid-cols-3 gap-4">
-              <a href="https://linkedin.com/company/ia-sevilla" className="aspect-square bg-white/10 hover:bg-white text-white hover:text-red-700 transition-all rounded-[25px] flex items-center justify-center border border-white/10 shadow-lg">
-                <Linkedin className="w-8 h-8" />
-              </a>
-              <a href="https://www.instagram.com/rociocano.ia/" className="aspect-square bg-white/10 hover:bg-white text-white hover:text-red-700 transition-all rounded-[25px] flex items-center justify-center border border-white/10 shadow-lg">
-                <Instagram className="w-8 h-8" />
-              </a>
-              <a href="https://www.facebook.com/asesoriaia" className="aspect-square bg-white/10 hover:bg-white text-white hover:text-red-700 transition-all rounded-[25px] flex items-center justify-center border border-white/10 shadow-lg">
-                <Facebook className="w-8 h-8" />
-              </a>
-            </div>
-
-            <a href="https://search.google.com/local/writereview?placeid=ChIJ-fSgQlCXyIcROqGvv0X8eyI&source=g.page.m._&laa=merchant-review-solicitation" className="flex items-center justify-center gap-3 py-6 bg-white text-slate-900 hover:bg-red-50 rounded-[30px] transition-all font-black uppercase text-[11px] tracking-[0.2em] shadow-2xl">
-              <Star className="w-5 h-5 text-yellow-500 fill-current" />
-              Escribir reseña en Google
+          <div className="grid grid-cols-2 gap-4">
+            <a href="https://wa.me/message/HUZQ5TAK3ROOE1" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-2xl transition-all font-bold text-sm">
+              <MessageCircle className="w-5 h-5" />
+              WhatsApp
+            </a>
+            <a href="mailto:rocio@seviai.es" className="flex items-center justify-center gap-2 py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-2xl transition-all font-bold text-sm">
+              <Mail className="w-5 h-5" />
+              Email
             </a>
           </div>
 
-          {/* SeviAI Ecosystem Signature */}
-          <div className="flex items-center justify-center gap-2 mt-8 opacity-60 hover:opacity-100 transition-opacity">
-            <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-white">
-              © 2026 Rocío Cano
-            </p>
-            <div className="w-px h-3 bg-white/20 mx-1"></div>
-            <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-white flex items-center gap-1.5">
-              SeviAI Ecosystem
-              <img src="/logo_sin_fondo.png" alt="SeviAI" className="h-3 w-auto brightness-0 invert opacity-80" />
-            </p>
+          <div className="flex justify-center gap-4">
+            <a href="https://linkedin.com/company/ia-sevilla" className="w-14 h-14 bg-white/10 hover:bg-white hover:text-[#0A66C2] text-white transition-all rounded-full flex items-center justify-center border border-white/10 shadow-lg">
+              <Linkedin className="w-6 h-6" />
+            </a>
+            <a href="https://www.instagram.com/rociocano.ia/" className="w-14 h-14 bg-white/10 hover:bg-white hover:text-[#E4405F] text-white transition-all rounded-full flex items-center justify-center border border-white/10 shadow-lg">
+              <Instagram className="w-6 h-6" />
+            </a>
+            <a href="https://www.facebook.com/asesoriaia" className="w-14 h-14 bg-white/10 hover:bg-white hover:text-[#1877F2] text-white transition-all rounded-full flex items-center justify-center border border-white/10 shadow-lg">
+              <Facebook className="w-6 h-6" />
+            </a>
           </div>
 
+          <a href="https://search.google.com/local/writereview?placeid=ChIJ-fSgQlCXyIcROqGvv0X8eyI&source=g.page.m._&laa=merchant-review-solicitation" className="flex items-center justify-center gap-3 py-5 bg-white text-slate-900 hover:bg-red-50 rounded-[20px] transition-all font-black uppercase text-[10px] tracking-[0.15em] shadow-xl border-b-4 border-slate-200 active:translate-y-1">
+            <Star className="w-5 h-5 text-yellow-500 fill-current" />
+            Escribir reseña en Google
+          </a>
         </div>
+
+        {/* FOOTER */}
+        <div className="flex flex-col items-center justify-center gap-3 mt-12 mb-20 opacity-60 hover:opacity-100 transition-opacity">
+          <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-white drop-shadow-md">
+            © 2026 Rocío Cano
+          </p>
+          <div className="w-10 h-px bg-white/20 my-1"></div>
+          <a href="https://seviai.es/" target="_blank" rel="noopener noreferrer" className="text-xs uppercase tracking-[0.2em] font-black text-white flex items-center gap-2 drop-shadow-md hover:text-red-300 transition-colors">
+            SeviAI Ecosystem
+            <img src="/logo_sin_fondo.png" alt="SeviAI" className="h-5 w-auto brightness-0 invert opacity-90" />
+          </a>
+        </div>
+
       </div>
 
       {/* Floating Save Contact Button */}
       <button
         onClick={handleSaveContact}
-        className="fixed top-6 right-6 w-14 h-14 bg-white/90 backdrop-blur-md text-slate-700 rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl hover:scale-110 transition-all duration-300 z-50 group border border-white/50 cursor-pointer"
+        className="fixed bottom-6 right-6 lg:top-6 lg:bottom-auto lg:right-6 w-14 h-14 bg-white text-slate-900 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all duration-300 z-50 group border-2 border-red-100 cursor-pointer"
         title="Descargar Contacto"
         aria-label="Descargar Contacto"
       >
-        <Download className="w-6 h-6 group-hover:text-[#C8202F] transition-colors drop-shadow-sm" />
+        <Download className="w-6 h-6 group-hover:text-[#C8202F] transition-colors" />
       </button>
 
     </div>
