@@ -282,7 +282,7 @@ const SeviAIHub = () => {
       {/* Floating Save Contact Button */}
       <button
         onClick={handleSaveContact}
-        className="fixed top-6 left-6 lg:top-6 lg:right-6 lg:left-auto lg:bottom-auto w-14 h-14 bg-white text-slate-900 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all duration-300 z-50 group border-2 border-red-100 cursor-pointer"
+        className="fixed top-6 right-6 w-14 h-14 bg-white text-slate-900 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all duration-300 z-50 group border-2 border-red-100 cursor-pointer"
         title="Descargar Contacto"
         aria-label="Descargar Contacto"
       >
