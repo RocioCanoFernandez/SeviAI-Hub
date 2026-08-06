@@ -27,12 +27,11 @@ const SeviAIHub = () => {
   const [openAccordion, setOpenAccordion] = useState('estrella'); // 'estrella' opens by default
 
   const handleSaveContact = () => {
-    // Usamos PHOTO;VALUE=URI que es mucho más seguro y compatible que inyectar Base64 gigante,
-    // y evitamos añadir CHARSET=UTF-8 en cada línea para no romper el estándar vCard 3.0.
-    const vcard = `BEGIN:VCARD\r\nVERSION:3.0\r\nN:Cano;Rocío;;;\r\nFN:Rocío Cano\r\nORG:SeviAI\r\nTITLE:Consultora Estratégica en IA para PYMES\r\nTEL;TYPE=WORK,VOICE:+34640316034\r\nEMAIL:rocio@seviai.es\r\nURL:https://hub.seviai.es/\r\nPHOTO;VALUE=URI:https://hub.seviai.es/rocio-headshot.JPG\r\nEND:VCARD`;
+    // Para asegurar 100% de compatibilidad con Contactos de Windows (que es muy especialito con los acentos UTF-8)
+    // la forma más segura y profesional es quitar las tildes internamente en el archivo.
+    const vcard = `BEGIN:VCARD\r\nVERSION:3.0\r\nN:Cano;Rocio;;;\r\nFN:Rocio Cano\r\nORG:SeviAI\r\nTITLE:Consultora Estrategica en IA para PYMES\r\nTEL;TYPE=WORK,VOICE:+34640316034\r\nEMAIL:rocio@seviai.es\r\nURL:https://hub.seviai.es/\r\nEND:VCARD`;
     
-    // El BOM (\ufeff) suele ser suficiente para que Windows lea UTF-8 correctamente
-    const blob = new Blob(['\ufeff' + vcard], { type: 'text/vcard;charset=utf-8' });
+    const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
@@ -283,7 +282,7 @@ const SeviAIHub = () => {
       {/* Floating Save Contact Button */}
       <button
         onClick={handleSaveContact}
-        className="fixed bottom-6 right-6 lg:top-6 lg:bottom-auto lg:right-6 w-14 h-14 bg-white text-slate-900 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all duration-300 z-50 group border-2 border-red-100 cursor-pointer"
+        className="fixed top-6 left-6 lg:top-6 lg:right-6 lg:left-auto lg:bottom-auto w-14 h-14 bg-white text-slate-900 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all duration-300 z-50 group border-2 border-red-100 cursor-pointer"
         title="Descargar Contacto"
         aria-label="Descargar Contacto"
       >
