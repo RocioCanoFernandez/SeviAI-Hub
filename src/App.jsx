@@ -170,7 +170,7 @@ const SeviAIHub = () => {
                 Productos empaquetados y listos para funcionar con impacto y beneficio inmediato en tu facturación o gestión:
               </p>
               
-              <a href="#" className="block bg-white/5 hover:bg-white/10 transition-colors rounded-xl p-4 border border-white/5">
+              <a href="https://soluciones.seviai.es/" className="block bg-white/5 hover:bg-white/10 transition-colors rounded-xl p-4 border border-white/5">
                 <h4 className="text-white font-bold mb-1 flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-400"/> Sistema de Reservas</h4>
                 <p className="text-xs text-slate-400">Asistente IA para alojamientos turísticos que gestiona clientes 24/7.</p>
               </a>
