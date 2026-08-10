@@ -115,7 +115,7 @@ const SeviAIHub = () => {
         </div>
 
         {/* CALENDAR - PRIMARY ACTION */}
-        <a href="https://cal.com/rocio-cano-seviai" className="w-full block bg-white rounded-[30px] p-6 shadow-2xl hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(200,32,47,0.5)] transition-all duration-500 group border-b-4 border-red-600 relative overflow-hidden mb-8">
+        <a href="https://cal.com/rocio-cano-seviai" target="_blank" rel="noopener noreferrer" className="w-full block bg-white rounded-[30px] p-6 shadow-2xl hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(200,32,47,0.5)] transition-all duration-500 group border-b-4 border-red-600 relative overflow-hidden mb-8">
           <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity transform group-hover:scale-110 duration-500">
             <Calendar className="w-32 h-32 text-red-900" />
           </div>
@@ -150,11 +150,11 @@ const SeviAIHub = () => {
               </p>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
-                <a href="https://formaciones.seviai.es" className="flex items-center justify-center gap-2 bg-[#C8202F] hover:bg-[#A51A27] text-white p-3 rounded-xl font-bold text-sm transition-colors shadow-lg">
+                <a href="https://formaciones.seviai.es" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-[#C8202F] hover:bg-[#A51A27] text-white p-3 rounded-xl font-bold text-sm transition-colors shadow-lg">
                   <BarChart className="w-4 h-4" />
                   Solicitar Diagnóstico
                 </a>
-                <a href="https://www.seviai.es/metodo-seviai-360/" className="flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 p-3 rounded-xl font-bold text-sm transition-colors">
+                <a href="https://www.seviai.es/metodo-seviai-360/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 p-3 rounded-xl font-bold text-sm transition-colors">
                   <Briefcase className="w-4 h-4" />
                   Ver Método Completo
                 </a>
@@ -173,17 +173,17 @@ const SeviAIHub = () => {
                 Productos empaquetados y listos para funcionar con impacto y beneficio inmediato en tu facturación o gestión:
               </p>
               
-              <a href="https://soluciones.seviai.es/" className="block bg-white/5 hover:bg-white/10 transition-colors rounded-xl p-4 border border-white/5">
+              <a href="https://soluciones.seviai.es/" target="_blank" rel="noopener noreferrer" className="block bg-white/5 hover:bg-white/10 transition-colors rounded-xl p-4 border border-white/5">
                 <h4 className="text-white font-bold mb-1 flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-400"/> Sistema de Reservas</h4>
                 <p className="text-xs text-slate-400">Asistente IA para alojamientos turísticos que gestiona clientes 24/7.</p>
               </a>
 
-              <a href="https://herramientas.seviai.es/" className="block bg-white/5 hover:bg-white/10 transition-colors rounded-xl p-4 border border-white/5">
+              <a href="https://herramientas.seviai.es/" target="_blank" rel="noopener noreferrer" className="block bg-white/5 hover:bg-white/10 transition-colors rounded-xl p-4 border border-white/5">
                 <h4 className="text-white font-bold mb-1 flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-400"/> Automatización de Facturas</h4>
                 <p className="text-xs text-slate-400">La IA extrae y clasifica tus facturas olvidándote del papeleo.</p>
               </a>
 
-              <a href="https://herramientas.seviai.es/" className="block bg-white/5 hover:bg-white/10 transition-colors rounded-xl p-4 border border-white/5">
+              <a href="https://herramientas.seviai.es/" target="_blank" rel="noopener noreferrer" className="block bg-white/5 hover:bg-white/10 transition-colors rounded-xl p-4 border border-white/5">
                 <h4 className="text-white font-bold mb-1 flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-400"/> Tu Hub Corporativo (NFC)</h4>
                 <p className="text-xs text-slate-400">Tu ecosistema digital para compartir tu contacto con solo acercar el móvil.</p>
               </a>
@@ -201,7 +201,7 @@ const SeviAIHub = () => {
                 Para negocios que buscan una solución concreta o puntual para resolver cuellos de botella específicos:
               </p>
               
-              <a href="https://cal.com/rocio-cano-seviai/60min" className="group flex items-center justify-between bg-white/5 hover:bg-white/10 rounded-xl p-4 border border-white/5 transition-colors">
+              <a href="https://cal.com/rocio-cano-seviai/60min" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between bg-white/5 hover:bg-white/10 rounded-xl p-4 border border-white/5 transition-colors">
                 <div>
                   <h4 className="text-white font-bold text-sm mb-1">Consultoría Estratégica</h4>
                   <p className="text-xs text-slate-400">Sesiones 1 a 1 por horas.</p>
@@ -209,7 +209,7 @@ const SeviAIHub = () => {
                 <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-red-400 transition-colors" />
               </a>
 
-              <a href="https://www.seviai.es/formacion-ia/" className="group flex items-center justify-between bg-white/5 hover:bg-white/10 rounded-xl p-4 border border-white/5 transition-colors">
+              <a href="https://www.seviai.es/formacion-ia/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between bg-white/5 hover:bg-white/10 rounded-xl p-4 border border-white/5 transition-colors">
                 <div>
                   <h4 className="text-white font-bold text-sm mb-1">Formación In-Company</h4>
                   <p className="text-xs text-slate-400">Cursos cerrados y bonificables.</p>
@@ -217,7 +217,7 @@ const SeviAIHub = () => {
                 <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-red-400 transition-colors" />
               </a>
 
-              <a href="https://www.seviai.es/servicios/" className="group flex items-center justify-between bg-white/5 hover:bg-white/10 rounded-xl p-4 border border-white/5 transition-colors">
+              <a href="https://www.seviai.es/servicios/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between bg-white/5 hover:bg-white/10 rounded-xl p-4 border border-white/5 transition-colors">
                 <div>
                   <h4 className="text-white font-bold text-sm mb-1">Desarrollo a Medida</h4>
                   <p className="text-xs text-slate-400">Soluciones entrenadas con tus datos.</p>
@@ -248,18 +248,18 @@ const SeviAIHub = () => {
           </div>
 
           <div className="flex justify-center gap-4">
-            <a href="https://linkedin.com/company/ia-sevilla" className="w-14 h-14 bg-white/10 hover:bg-white hover:text-[#0A66C2] text-white transition-all rounded-full flex items-center justify-center border border-white/10 shadow-lg">
+            <a href="https://linkedin.com/company/ia-sevilla" target="_blank" rel="noopener noreferrer" className="w-14 h-14 bg-white/10 hover:bg-white hover:text-[#0A66C2] text-white transition-all rounded-full flex items-center justify-center border border-white/10 shadow-lg">
               <Linkedin className="w-6 h-6" />
             </a>
-            <a href="https://www.instagram.com/rociocano.ia/" className="w-14 h-14 bg-white/10 hover:bg-white hover:text-[#E4405F] text-white transition-all rounded-full flex items-center justify-center border border-white/10 shadow-lg">
+            <a href="https://www.instagram.com/rociocano.ia/" target="_blank" rel="noopener noreferrer" className="w-14 h-14 bg-white/10 hover:bg-white hover:text-[#E4405F] text-white transition-all rounded-full flex items-center justify-center border border-white/10 shadow-lg">
               <Instagram className="w-6 h-6" />
             </a>
-            <a href="https://www.facebook.com/asesoriaia" className="w-14 h-14 bg-white/10 hover:bg-white hover:text-[#1877F2] text-white transition-all rounded-full flex items-center justify-center border border-white/10 shadow-lg">
+            <a href="https://www.facebook.com/asesoriaia" target="_blank" rel="noopener noreferrer" className="w-14 h-14 bg-white/10 hover:bg-white hover:text-[#1877F2] text-white transition-all rounded-full flex items-center justify-center border border-white/10 shadow-lg">
               <Facebook className="w-6 h-6" />
             </a>
           </div>
 
-          <a href="https://search.google.com/local/writereview?placeid=ChIJ-fSgQlCXyIcROqGvv0X8eyI&source=g.page.m._&laa=merchant-review-solicitation" className="flex items-center justify-center gap-3 py-5 bg-white text-slate-900 hover:bg-red-50 rounded-[20px] transition-all font-black uppercase text-[10px] tracking-[0.15em] shadow-xl border-b-4 border-slate-200 active:translate-y-1">
+          <a href="https://search.google.com/local/writereview?placeid=ChIJ-fSgQlCXyIcROqGvv0X8eyI&source=g.page.m._&laa=merchant-review-solicitation" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 py-5 bg-white text-slate-900 hover:bg-red-50 rounded-[20px] transition-all font-black uppercase text-[10px] tracking-[0.15em] shadow-xl border-b-4 border-slate-200 active:translate-y-1">
             <Star className="w-5 h-5 text-yellow-500 fill-current" />
             Escribir reseña en Google
           </a>
