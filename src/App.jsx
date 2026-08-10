@@ -178,12 +178,12 @@ const SeviAIHub = () => {
                 <p className="text-xs text-slate-400">Asistente IA para alojamientos turísticos que gestiona clientes 24/7.</p>
               </a>
 
-              <a href="https://tu-hub-facil.lovable.app" className="block bg-white/5 hover:bg-white/10 transition-colors rounded-xl p-4 border border-white/5">
+              <a href="https://herramientas.seviai.es/" className="block bg-white/5 hover:bg-white/10 transition-colors rounded-xl p-4 border border-white/5">
                 <h4 className="text-white font-bold mb-1 flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-400"/> Automatización de Facturas</h4>
                 <p className="text-xs text-slate-400">La IA extrae y clasifica tus facturas olvidándote del papeleo.</p>
               </a>
 
-              <a href="https://tu-hub-facil.lovable.app" className="block bg-white/5 hover:bg-white/10 transition-colors rounded-xl p-4 border border-white/5">
+              <a href="https://herramientas.seviai.es/" className="block bg-white/5 hover:bg-white/10 transition-colors rounded-xl p-4 border border-white/5">
                 <h4 className="text-white font-bold mb-1 flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-400"/> Tu Hub Corporativo (NFC)</h4>
                 <p className="text-xs text-slate-400">Tu ecosistema digital para compartir tu contacto con solo acercar el móvil.</p>
               </a>
