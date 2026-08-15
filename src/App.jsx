@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Linkedin, Instagram, Calendar, ArrowRight, Facebook, Star, MessageCircle, Download, ChevronDown, CheckCircle, Briefcase, Zap, Rocket, GraduationCap, BarChart } from 'lucide-react';
+import { Mail, Linkedin, Instagram, Calendar, ArrowRight, Facebook, Star, MessageCircle, Download, ChevronDown, CheckCircle, Briefcase, Zap, Rocket, GraduationCap, BarChart, BookOpen } from 'lucide-react';
 
 const AccordionItem = ({ title, icon: Icon, children, isOpen, onClick }) => (
   <div className={`border rounded-[20px] backdrop-blur-md overflow-hidden transition-all duration-300 mb-4 shadow-lg ${isOpen ? 'border-red-500/50 bg-slate-900/60' : 'border-white/10 bg-slate-800/40 hover:bg-slate-800/60'}`}>
@@ -235,6 +235,19 @@ const SeviAIHub = () => {
             <span className="text-red-300 font-black text-[10px] uppercase tracking-[0.35em] block">CONOCIMIENTO & CONTACTO</span>
             <p className="text-white text-sm font-medium opacity-80">Sígueme y contáctame para aplicar IA a tu negocio.</p>
           </div>
+
+          <a href="https://www.seviai.es/blog/" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between bg-white/5 hover:bg-white/10 rounded-2xl p-4 border border-white/10 transition-colors">
+            <div className="flex items-center gap-4">
+              <div className="bg-red-500/20 text-red-300 p-3 rounded-xl group-hover:bg-red-500/30 transition-colors">
+                <BookOpen className="w-6 h-6" />
+              </div>
+              <div>
+                <h4 className="text-white font-bold text-sm mb-0.5">Visita mi Blog</h4>
+                <p className="text-[11px] text-slate-400 font-medium">Artículos y reflexiones sobre IA empresarial</p>
+              </div>
+            </div>
+            <ArrowRight className="w-5 h-5 text-slate-500 group-hover:text-red-400 transition-colors" />
+          </a>
 
           <div className="grid grid-cols-2 gap-4">
             <a href="https://wa.me/message/HUZQ5TAK3ROOE1" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-2xl transition-all font-bold text-sm">
