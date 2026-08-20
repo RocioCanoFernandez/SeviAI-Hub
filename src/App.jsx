@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Cal, { getCalApi } from "@calcom/embed-react";
 import { Mail, Linkedin, Instagram, Calendar, ArrowRight, Facebook, Star, MessageCircle, Download, ChevronDown, CheckCircle, Briefcase, Zap, Rocket, GraduationCap, BarChart, BookOpen } from 'lucide-react';
 
 const AccordionItem = ({ title, icon: Icon, children, isOpen, onClick }) => (
@@ -25,6 +26,13 @@ const AccordionItem = ({ title, icon: Icon, children, isOpen, onClick }) => (
 
 const SeviAIHub = () => {
   const [openAccordion, setOpenAccordion] = useState('estrella'); // 'estrella' opens by default
+
+  useEffect(()=>{
+	  (async function () {
+		const cal = await getCalApi({});
+		cal("ui", {"styles":{"branding":{"brandColor":"#C8202F"}},"hideEventTypeDetails":false,"layout":"month_view"});
+	  })();
+  }, []);
 
   const handleSaveContact = () => {
     // Para asegurar 100% de compatibilidad con Contactos de Windows (que es muy especialito con los acentos UTF-8)
@@ -115,20 +123,19 @@ const SeviAIHub = () => {
         </div>
 
         {/* CALENDAR - PRIMARY ACTION */}
-        <a href="https://cal.com/rocio-cano-seviai" target="_blank" rel="noopener noreferrer" className="w-full block bg-white rounded-[30px] p-6 shadow-2xl hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(200,32,47,0.5)] transition-all duration-500 group border-b-4 border-red-600 relative overflow-hidden mb-8">
-          <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity transform group-hover:scale-110 duration-500">
-            <Calendar className="w-32 h-32 text-red-900" />
+        <div className="w-full bg-white rounded-[30px] p-2 sm:p-4 shadow-2xl border-b-4 border-red-600 relative overflow-hidden mb-8 h-[700px] flex flex-col">
+          <div className="text-center pt-2 pb-4">
+            <h3 className="text-xl font-black text-slate-900 leading-tight">Agenda tu llamada</h3>
+            <p className="text-slate-500 text-xs font-medium">Reunión estratégica gratuita de 30 min.</p>
           </div>
-          <div className="flex items-center gap-5 relative">
-            <div className="bg-red-50 text-[#C8202F] p-4 rounded-[20px] group-hover:rotate-12 transition-transform shadow-sm">
-              <Calendar className="w-8 h-8" />
-            </div>
-            <div>
-              <h3 className="text-2xl font-black text-slate-900 group-hover:text-[#C8202F] transition-colors leading-tight mb-1">Agenda tu llamada</h3>
-              <p className="text-slate-500 text-sm font-medium">Reunión estratégica gratuita de 30 min.</p>
-            </div>
+          <div className="flex-1 w-full overflow-hidden">
+            <Cal 
+              calLink="rocio-cano-seviai/60min" 
+              style={{width:"100%",height:"100%",overflow:"scroll"}} 
+              config={{layout: 'month_view'}} 
+            />
           </div>
-        </a>
+        </div>
 
         <div className="w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent my-6"></div>
 
