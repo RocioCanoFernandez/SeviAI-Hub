@@ -130,7 +130,7 @@ const SeviAIHub = () => {
           </div>
           <div className="flex-1 w-full overflow-hidden">
             <Cal 
-              calLink="rocio-cano-seviai/60min" 
+              calLink="rocio-cano-seviai/30min" 
               style={{width:"100%",height:"100%",overflow:"scroll"}} 
               config={{layout: 'month_view'}} 
             />
